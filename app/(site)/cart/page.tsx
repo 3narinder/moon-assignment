@@ -9,6 +9,9 @@ import {
   removeFromCart,
   CartItem,
 } from "@/redux/cartSlice";
+import { AiFillDelete } from "react-icons/ai";
+import InputField from "@/components/custom/InputField";
+import Button from "@/components/custom/Button";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -29,7 +32,7 @@ const Cart = () => {
       ) : (
         <table className="w-full">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-warm-black text-neutral-2">
               <th className=" px-4 py-3 text-left">Product</th>
               <th className=" px-4 py-3 text-left">Image</th>
               <th className=" px-4 py-3 text-center">Price</th>
@@ -43,7 +46,9 @@ const Cart = () => {
             {items.map((item: CartItem) => (
               <tr key={item.id} className="text-center">
                 {/* Product Name */}
-                <td className=" px-4 py-3 text-left">{item.title}</td>
+                <td className=" px-4 py-3 text-left text-display-2 font-semibold text-neutral-6">
+                  {item.title}
+                </td>
 
                 {/* Product Image */}
                 <td className=" px-4 py-3 flex justify-center">
@@ -56,7 +61,9 @@ const Cart = () => {
                 </td>
 
                 {/* Price */}
-                <td className=" px-4 py-3">${item.price}</td>
+                <td className="px-4 py-3 text-neutral-7 text-display-2 font-semibold">
+                  ${item.price}
+                </td>
 
                 {/* Quantity Controls */}
                 <td className=" px-4 py-3">
@@ -74,12 +81,12 @@ const Cart = () => {
                       -
                     </button>
 
-                    <span className="text-lg font-semibold">
+                    <span className="text-lg text-display-2">
                       {item.quantity}
                     </span>
 
                     <button
-                      className="px-3 py-1 border rounded hover:bg-gray-200 cursor-pointer"
+                      className="px-3 py-1 border rounded hover:bg-neutral-3 cursor-pointer"
                       onClick={() => dispatch(increaseQuantity(item.id))}
                     >
                       +
@@ -88,15 +95,14 @@ const Cart = () => {
                 </td>
 
                 {/* Total Price */}
-                <td className=" px-4 py-3">${item.price * item.quantity}</td>
+                <td className="px-4 py-3 text-neutral-7 text-display-2 font-semibold">
+                  ${item.price * item.quantity}
+                </td>
 
                 {/* Remove Button */}
                 <td className=" px-4 py-3">
-                  <button
-                    className="text-red-500 font-bold hover:text-red-700 cursor-pointer"
-                    onClick={() => dispatch(removeFromCart(item.id))}
-                  >
-                    X
+                  <button onClick={() => dispatch(removeFromCart(item.id))}>
+                    <AiFillDelete className="text-red-400 font-bold text-lg hover:text-red-600 cursor-pointer" />
                   </button>
                 </td>
               </tr>
@@ -105,7 +111,35 @@ const Cart = () => {
         </table>
       )}
 
-      <div className=""></div>
+      <div className="flex items-center justify-between mb-8 ">
+        <div className="flex items-center gap-6">
+          <InputField placeholder="Coupon Code" />
+
+          <div className="px-4 py-[11] inline-flex items-center justify-center gap-2 cursor-pointer text-display-2 tracking-wide font-semibold bg-neutral-8 text-neutral-2 whitespace-nowrap">
+            Apply Coupon
+          </div>
+        </div>
+
+        <div className="w-64 py-[11] inline-flex items-center justify-center gap-2 cursor-pointer text-display-2 tracking-wide font-semibold bg-neutral-8 text-neutral-2 whitespace-nowrap">
+          Update Cart
+        </div>
+      </div>
+
+      {/* Cart Total */}
+      <div className="w-full flex items-center justify-end">
+        <div className="lg:w-1/3 p-6 bg-warm-black text-neutral-2 shadow-lg h-fit self-end">
+          <h2 className="text-display-4 font-bold mb-4">Cart Total</h2>
+          <div className="flex justify-between text-lg">
+            <span className="font-semibold text-display-2">Subtotal:</span>
+            <span className="font-semibold text-display-2">
+              $
+              {items
+                .reduce((total, item) => total + item.price * item.quantity, 0)
+                .toFixed(2)}
+            </span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

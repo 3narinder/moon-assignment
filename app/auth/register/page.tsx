@@ -10,6 +10,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import SelectField from "@/components/custom/SelectFiled";
 import { register } from "@/redux/authSlice";
+import Link from "next/link";
 
 const validationSchema = yup.object({
   firstName: yup.string().required("First name is required."),
@@ -90,10 +91,7 @@ const Register = () => {
 
       <div className="lg:w-2/5 w-full flex flex-col justify-center mx-20">
         <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
-        <form
-          onSubmit={formik.handleSubmit}
-          className="flex flex-col gap-6 px-6"
-        >
+        <form onSubmit={formik.handleSubmit} className="flex flex-col gap-6">
           <div className="w-full flex items-center gap-4">
             <InputField
               type="text"
@@ -223,10 +221,30 @@ const Register = () => {
             />
           </div>
 
-          <div className="mt-8 w-full flex items-center justify-center">
+          <div className="mt-4 w-full flex items-center justify-center">
             <Button text="Register" fill />
           </div>
+
+          <button className="px-3 py-2 flex items-center justify-center gap-2  w-full border border-neutral-8 text-neutral-8 cursor-pointer">
+            <Image
+              src="/icons/Google.png"
+              alt="google"
+              width={18}
+              height={18}
+            />
+
+            <span className="text-display-2 font-semibold">
+              SignUp with Google
+            </span>
+          </button>
         </form>
+
+        <div className="mt-4 text-display-2 font-semibold text-neutral-6 mr-2">
+          <span className="">Already a user?</span>{" "}
+          <Link href="/auth/login">
+            <span className="text-blue-400 cursor-pointer">Log In</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

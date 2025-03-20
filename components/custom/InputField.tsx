@@ -1,11 +1,13 @@
+"use client";
+
 import React, { useState } from "react";
 
 interface InputFieldProps {
-  type: string;
+  type?: string;
   name?: string;
   placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   errorMessage?: string;
 }
@@ -32,7 +34,7 @@ const InputField: React.FC<InputFieldProps> = ({
         onChange={onChange}
         required={required}
         onBlur={() => setTouched(true)}
-        className={`w-full px-4 py-2.5 border outline-none placeholder:text-neutral-6 text-neutral-8 text-display-2
+        className={`w-full px-4 py-2.5 border outline-none placeholder:text-neutral-5 text-neutral-8 text-display-2
           ${
             showError || errorMessage
               ? "border-red-500"

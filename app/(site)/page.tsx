@@ -95,7 +95,7 @@ const Home = () => {
       {error && <p className="text-red-500">Error: {error}</p>}
 
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-6">
-        {products?.map((product: Product) => (
+        {products?.slice(0, 8).map((product: Product) => (
           <ProductCard
             product={product}
             key={product?.id}

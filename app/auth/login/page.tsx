@@ -1,12 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import InputField from "@/components/custom/InputField";
 import Image from "next/image";
 import Button from "@/components/custom/Button";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { login } from "@/redux/authSlice";
+import Link from "next/link";
 
 const validationSchema = yup.object({
   email: yup
@@ -22,7 +23,6 @@ const validationSchema = yup.object({
 const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const user = useSelector((state) => state.auth.user);
 
   const formik = useFormik({
     initialValues: {
@@ -54,7 +54,7 @@ const Login = () => {
 
           {/* Background Image */}
           <Image
-            src="/images/register_image.jpg"
+            src="/images/login-image.jpg"
             alt="image"
             fill
             className="object-cover object-center"
@@ -76,28 +76,65 @@ const Login = () => {
         <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
         <form
           onSubmit={formik.handleSubmit}
-          className="flex flex-col gap-6 px-6"
+          className="flex flex-col gap-2 px-6"
         >
-          <InputField
-            type="email"
-            placeholder="Email"
-            {...formik.getFieldProps("email")}
-            errorMessage={formik?.touched?.email && formik?.errors?.email}
-            floatingError
-          />
-          <InputField
-            type="password"
-            placeholder="Password"
-            {...formik.getFieldProps("password")}
-            errorMessage={formik?.touched?.password && formik?.errors?.password}
-            floatingError
-          />
+          <div className="flex flex-col items-center gap-4">
+            <InputField
+              type="email"
+              placeholder="Email"
+              {...formik.getFieldProps("email")}
+              errorMessage={formik?.touched?.email && formik?.errors?.email}
+              floatingError
+            />
+            <InputField
+              type="password"
+              placeholder="Password"
+              {...formik.getFieldProps("password")}
+              errorMessage={
+                formik?.touched?.password && formik?.errors?.password
+              }
+              floatingError
+            />
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <input type="checkbox" className="accent-warm-black" />
+              <div className="text-display-1">Remember me</div>
+            </div>
+
+            <Link href="/auth/forgotPassword">
+              <div className="text-display-1 cursor-pointer">
+                Forgot password?
+              </div>
+            </Link>
+          </div>
 
           {/* Submit Button */}
-          <div className=" mt-2 w-full flex items-center justify-center">
-            <Button text="Login" fill />
+          <div className="mt-4 flex flex-col items-center gap-4">
+            <Button text="Login" variant="fill" />
+
+            <button className=" px-3 py-2 flex items-center justify-center gap-2  w-full border border-neutral-8 text-neutral-8 cursor-pointer">
+              <Image
+                src="/icons/Google.png"
+                alt="google"
+                width={18}
+                height={18}
+              />
+
+              <span className="text-display-2 font-semibold">
+                Login with Google
+              </span>
+            </button>
           </div>
         </form>
+
+        <div className="mt-4 text-display-2 font-semibold text-neutral-6 mr-2 px-6">
+          <span className="">New user? </span>{" "}
+          <Link href="/auth/register">
+            <span className="text-blue-400 cursor-pointer">Register here</span>
+          </Link>
+        </div>
       </div>
     </section>
   );
