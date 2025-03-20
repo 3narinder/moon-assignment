@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-garamond: "EB Garamond", "serif";
+  --color-warm-black: #3a3845;
+  --color-binge-peach: #f7ccac;
+  --color-light-brown: #c69b7b;
+  --color-green: "#826f66";
+  --color-neutral-8: #3a3845;
+  --color-neutral-7: #595667;
+  --color-neutral-6: #807f86;
+  --color-neutral-5: #a6a6a8;
+  --color-neutral-4: #cac9cf;
+  --color-neutral-3: #e5e5e5;
+  --color-neutral-2: #f7f6f5;
+}
+
+.text-display-12 {
+  @apply text-8xl leading-24 font-inter;
+}
+
+.text-display-11 {
+  @apply text-7xl leading-[72px] font-inter;
+}
+
+.text-display-10 {
+  @apply text-6xl leading-[60px] font-inter;
+}
+
+.text-display-9 {
+  @apply text-5xl leading-12 font-inter;
+}
+
+.text-display-8 {
+  @apply text-4xl leading-10 font-inter;
+}
+
+.text-display-7 {
+  @apply text-3xl leading-9 font-inter;
+}
+
+.text-display-6 {
+  @apply text-2xl leading-8 font-inter;
+}
+
+.text-display-5 {
+  @apply text-xl leading-7 font-inter;
+}
+
+.text-display-4 {
+  @apply text-lg leading-6 font-inter;
+}
+
+.text-display-3 {
+  @apply text-base leading-[22px] font-inter;
+}
+
+.text-display-2 {
+  @apply text-sm leading-5 font-inter;
+}
+
+.text-display-1 {
+  @apply text-xs leading-[18px] font-inter;
+}
+
+.para-lg {
+  @apply text-lg leading-7 font-inter;
+}
+
+.para-md {
+  @apply text-base leading-6 font-inter;
+}
+
+.para-base {
+  @apply text-sm leading-[22px] font-inter;
+}
+
+.para-sm {
+  @apply text-xs leading-[18px] font-inter;
+}
+
+.heading-12 {
+  @apply font-garamond text-8xl leading-24;
+}
+
+.heading-11 {
+  @apply font-garamond text-7xl leading-[72px];
+}
+
+.heading-10 {
+  @apply font-garamond text-6xl leading-[60px];
+}
+
+.heading-9 {
+  @apply font-garamond text-5xl leading-12;
+}
+
+.heading-8 {
+  @apply font-garamond text-4xl leading-10;
+}
+
+.heading-7 {
+  @apply font-garamond  text-3xl leading-9;
+}
+
+.heading-6 {
+  @apply font-garamond text-2xl leading-8;
+}
