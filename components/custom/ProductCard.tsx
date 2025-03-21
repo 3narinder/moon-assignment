@@ -45,7 +45,7 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => {
 
       {isInCart ? (
         <Button
-          text="ALREADY IN CART"
+          text="IN THE CART"
           onClick={onClick}
           disabled={isInCart}
           variant="disabled"
