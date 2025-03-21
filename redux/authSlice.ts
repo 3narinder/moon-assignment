@@ -38,7 +38,7 @@ const authSlice = createSlice({
       }
     },
     logout: (state) => {
-      state.loggedIn = false; // Set loggedIn to false
+      state.loggedIn = false;
       localStorage.setItem("loggedIn", "false");
     },
     register: (state, action: PayloadAction<User>) => {

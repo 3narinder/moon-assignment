@@ -15,7 +15,6 @@ export const ProtectRoute = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Ensure this runs only on the client side
       const storedUser = localStorage.getItem("user");
       const loggedIn = localStorage.getItem("loggedIn");
 

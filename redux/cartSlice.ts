@@ -1,7 +1,6 @@
 import { Product } from "@/constants/Types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define CartItem type (extends Product with quantity)
 export interface CartItem
   extends Pick<Product, "id" | "title" | "price" | "image"> {
   quantity: number;

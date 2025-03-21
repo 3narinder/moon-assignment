@@ -1,7 +1,6 @@
 import { Product } from "@/constants/Types";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Async thunk for fetching products
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
   const response = await fetch("https://fakestoreapi.com/products");
   if (!response.ok) throw new Error("Failed to fetch products");

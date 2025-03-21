@@ -27,7 +27,6 @@ const Footer = () => {
           <Button text="Get started" variant="footer" />
         </div>
 
-        {/* Full-height divider */}
         <div className="lg:flex  hidden absolute left-1/2 transform -translate-x-20 top-0 bottom-0 w-[1px] bg-neutral-2"></div>
 
         <div className="lg:w-3/5 w-full grid lg:grid-cols-3 grid-cols-2 gap-8 lg:px-20 md:px-12 px-6 border-neutral-2">

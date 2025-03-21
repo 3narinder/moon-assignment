@@ -24,16 +24,6 @@ const WomenSection = () => {
 
   return (
     <section className="">
-      {/* Hero */}
-      {/* <div className="w-full h-[80vh] md:h-[60vh] relative overflow-hidden">
-        <Image
-          src="/images/women-hero.jpg"
-          alt="men hero image"
-          fill
-          className="object-cover object-center"
-        />
-      </div> */}
-
       {/* Category Section */}
       <div className="mt-8 lg:mx-32 mx-4">
         <h1 className="heading-7 font-bold text-center mb-6 uppercase tracking-wider">
