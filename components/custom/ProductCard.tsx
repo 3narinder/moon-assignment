@@ -12,7 +12,6 @@ interface ProductCardProps {
 const ProductCard = ({ product, onClick }: ProductCardProps) => {
   const cartItems = useSelector((state) => state.cart.items);
 
-  // Check if product is already in the cart
   const isInCart = cartItems.some((item: Product) => item.id === product.id);
 
   return (

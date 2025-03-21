@@ -27,7 +27,7 @@ const Cart = () => {
 
       {items.length === 0 ? (
         <p className="heading-6 text-neutral-6 font-semibold uppercase text-center mt-20">
-          Your cart is empty.
+          Your cart is empty
         </p>
       ) : (
         <table className="w-full">
@@ -111,35 +111,42 @@ const Cart = () => {
         </table>
       )}
 
-      <div className="flex items-center justify-between mb-8 ">
-        <div className="flex items-center gap-6">
-          <InputField placeholder="Coupon Code" />
+      {items?.length > 0 && (
+        <div className="flex items-center justify-between mb-8 ">
+          <div className="flex items-center gap-6">
+            <InputField placeholder="Coupon Code" />
 
-          <div className="px-4 py-[11] inline-flex items-center justify-center gap-2 cursor-pointer text-display-2 tracking-wide font-semibold bg-neutral-8 text-neutral-2 whitespace-nowrap">
-            Apply Coupon
+            <div className="px-4 py-[11] inline-flex items-center justify-center gap-2 cursor-pointer text-display-2 tracking-wide font-semibold bg-neutral-8 text-neutral-2 whitespace-nowrap">
+              Apply Coupon
+            </div>
+          </div>
+
+          <div className="w-64 py-[11] inline-flex items-center justify-center gap-2 cursor-pointer text-display-2 tracking-wide font-semibold bg-neutral-8 text-neutral-2 whitespace-nowrap">
+            Update Cart
           </div>
         </div>
-
-        <div className="w-64 py-[11] inline-flex items-center justify-center gap-2 cursor-pointer text-display-2 tracking-wide font-semibold bg-neutral-8 text-neutral-2 whitespace-nowrap">
-          Update Cart
-        </div>
-      </div>
+      )}
 
       {/* Cart Total */}
-      <div className="w-full flex items-center justify-end">
-        <div className="lg:w-1/3 p-6 bg-warm-black text-neutral-2 shadow-lg h-fit self-end">
-          <h2 className="text-display-4 font-bold mb-4">Cart Total</h2>
-          <div className="flex justify-between text-lg">
-            <span className="font-semibold text-display-2">Subtotal:</span>
-            <span className="font-semibold text-display-2">
-              $
-              {items
-                .reduce((total, item) => total + item.price * item.quantity, 0)
-                .toFixed(2)}
-            </span>
+      {items.length > 0 && (
+        <div className="w-full flex items-center justify-end">
+          <div className="lg:w-1/3 p-6 bg-warm-black text-neutral-2 shadow-lg h-fit self-end">
+            <h2 className="text-display-4 font-bold mb-4">Cart Total</h2>
+            <div className="flex justify-between text-lg">
+              <span className="font-semibold text-display-2">Subtotal:</span>
+              <span className="font-semibold text-display-2">
+                $
+                {items
+                  .reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )
+                  .toFixed(2)}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

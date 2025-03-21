@@ -1,24 +1,25 @@
 "use client";
-
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "@/redux/productSlice";
-import { addToCart } from "@/redux/cartSlice";
+import Loading from "@/components/custom/Loading";
 import ProductCard from "@/components/custom/ProductCard";
 import { Product } from "@/constants/Types";
-import Loading from "@/components/custom/Loading";
+import { fetchProducts } from "@/redux/productSlice";
 import Image from "next/image";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "@/redux/cartSlice"; // Ensure this import exists
 
-const Home = () => {
+const MenSection = () => {
   const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state) => state.products);
+  const { menProducts, loading, error } = useSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
   const handleAddToCart = (product: Product) => {
-    dispatch(addToCart(product));
+    dispatch(addToCart(product)); // ❌ You were missing a closing curly brace `}`
   };
 
   return (
@@ -26,20 +27,19 @@ const Home = () => {
       {/* Hero */}
       {/* <div className="w-full h-[80vh] md:h-[60vh] relative overflow-hidden">
         <Image
-          src="/images/men.avif"
+          src="/images/men-hero.png"
           alt="men hero image"
           fill
           className="object-cover object-center"
         />
       </div> */}
-
       {/* Category Section */}
-      <div className="mt-8 lg:mx-32 mx-4">
+      <div className="mt-8 lg:mx-32 mx-4 ">
         <h1 className="heading-7 font-bold text-center mb-6 uppercase tracking-wider">
           Categories
         </h1>
 
-        <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-8 gap-6 mb-24">
+        <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-8 gap-6 mb-24 justify-center">
           {[
             {
               src: "/images/men.png",
@@ -64,7 +64,7 @@ const Home = () => {
           ].map(({ src, alt, label }) => (
             <div
               key={label}
-              className="h-72 w-full max-w-[260px] flex flex-col items-center lg:ml-0 md:ml-16"
+              className="h-72 w-full max-w-[260px] flex flex-col items-center"
             >
               <div className="h-64 w-52 flex justify-center items-center overflow-hidden">
                 <Image
@@ -86,14 +86,14 @@ const Home = () => {
       {/* Best Sellers */}
       <div className="flex flex-col lg:mx-32 mx-4">
         <h1 className="heading-7 font-bold text-center mb-6 uppercase tracking-wider">
-          Best Sellers
+          Men's Clothing
         </h1>
 
         {loading && <Loading />}
         {error && <p className="text-red-500">Error: {error}</p>}
 
-        <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 justify-center lg:ml-0 ml-16">
-          {products?.slice(0, 8).map((product: Product) => (
+        <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 justify-center">
+          {menProducts?.slice(0, 8).map((product: Product) => (
             <ProductCard
               product={product}
               key={product?.id}
@@ -106,4 +106,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MenSection;

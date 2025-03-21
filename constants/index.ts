@@ -1,14 +1,13 @@
 // constants/index.ts
 export const NAV_LINKS = [
   { name: "Home", href: "/" },
-  { name: "Shop", href: "/shop" },
+  { name: "Men", href: "/men" },
+  { name: "Women", href: "/women" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
 ];
 
 export const NAV_ICONS = [
   { src: "/icons/Search.png", alt: "Search" },
-  { src: "/icons/Avatar.png", alt: "Profile" },
   { src: "/icons/Heart.png", alt: "Wishlist" },
   { src: "/icons/Shopping_cart.png", alt: "Cart" },
 ];
