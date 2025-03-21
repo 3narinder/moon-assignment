@@ -35,7 +35,7 @@ const WomenSection = () => {
       </div> */}
 
       {/* Category Section */}
-      <div className="mt-8">
+      <div className="mt-8 lg:mx-32 mx-4">
         <h1 className="heading-7 font-bold text-center mb-6 uppercase tracking-wider">
           Categories
         </h1>

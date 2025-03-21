@@ -11,7 +11,6 @@ import {
 } from "@/redux/cartSlice";
 import { AiFillDelete } from "react-icons/ai";
 import InputField from "@/components/custom/InputField";
-import Button from "@/components/custom/Button";
 
 const Cart = () => {
   const dispatch = useDispatch();
